@@ -6,7 +6,7 @@ import android.view.KeyEvent
 import android.webkit.WebView
 import android.webkit.WebSettings
 import android.content.pm.ApplicationInfo
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_web_view.*
 
 
 class WebViewActivity : AppCompatActivity() {
@@ -19,7 +19,7 @@ class WebViewActivity : AppCompatActivity() {
             WebView.setWebContentsDebuggingEnabled(true)
         }
 
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_web_view)
         mainView.settings.cacheMode = WebSettings.LOAD_DEFAULT
         mainView.settings.javaScriptEnabled = true
         mainView.settings.domStorageEnabled = true
