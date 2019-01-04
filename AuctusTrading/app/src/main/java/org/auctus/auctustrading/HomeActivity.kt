@@ -3,13 +3,16 @@ package org.auctus.auctustrading
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+    override fun getContentLayoutId(): Int {
+        return R.layout.activity_home
+    }
+
+    override fun onCreateContent(content: View) {
         navigateButton.setOnClickListener{
             test()
         }
