@@ -1,6 +1,11 @@
 <resources>
+    <string name="login">Login</string>
     <string name="app_name">Auctus Trading</string>
     <string name="home_text">Do you want to become part of Auctus Trading?</string>
     <string name="join_now"><u>JOIN NOW</u></string>
+    <string name="or">Or</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="enter">Enter</string>
+    <string name="forgot_click">Forgot Password?<u>Click Here</u></string>
     <string name="forgot_password">Please enter the email address used to register. Subsequently you will get a recovery email, to restore your password.</string>
 </resources>
