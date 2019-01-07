@@ -6,6 +6,8 @@
     <string name="or">Or</string>
     <string name="remember_me">Remember Me</string>
     <string name="enter">Enter</string>
+    <string name="continue_facebook">Continue with Facebook</string>
+    <string name="continue_google">Continue with Google</string>
     <string name="forgot_click">Forgot Password?<u>Click Here</u></string>
     <string name="forgot_password">Please enter the email address used to register. Subsequently you will get a recovery email, to restore your password.</string>
 </resources>
