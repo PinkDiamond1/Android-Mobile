@@ -10,4 +10,8 @@ class LoginActivity : BaseActivity() {
     override fun onCreateContent(content: View) {
 
     }
+
+    fun navigateToForgotPassword(v: View){
+        navigate(ForgotPasswordActivity::class.java)
+    }
 }

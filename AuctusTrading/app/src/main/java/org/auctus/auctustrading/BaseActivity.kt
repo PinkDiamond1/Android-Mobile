@@ -1,7 +1,7 @@
 package org.auctus.auctustrading
 
+import android.content.Intent
 import android.content.pm.ActivityInfo
-import android.opengl.Visibility
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.LayoutRes
@@ -36,5 +36,10 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected fun hideProgress() {
         findViewById<ProgressBar>(R.id.simpleProgressBar).visibility = View.INVISIBLE
+    }
+
+    protected fun navigate(activityClass: Class<*>) {
+        val intent = Intent(this, activityClass)
+        startActivity(intent)
     }
 }

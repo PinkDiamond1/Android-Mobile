@@ -13,13 +13,14 @@ class HomeActivity : BaseActivity() {
     }
 
     override fun onCreateContent(content: View) {
-        navigateButton.setOnClickListener{
-            test()
-        }
+
     }
 
-    private fun test(){
-        val intent = Intent(this, WebViewActivity::class.java)
-        startActivity(intent)
+    fun navigateToLogin(v: View){
+        navigate(LoginActivity::class.java)
+    }
+
+    fun navigateToRegistration(v: View){
+        navigate(RegistrationActivity::class.java)
     }
 }
