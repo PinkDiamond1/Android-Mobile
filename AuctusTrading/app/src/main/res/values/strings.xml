@@ -8,8 +8,12 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="short_description">Short description</string>
+    <string name="invitation_code">Invitation code</string>
+    <string name="agree_terms">Agree with all terms</string>
     <string name="remember_me">Remember Me</string>
     <string name="enter">Enter</string>
+    <string name="submit">SUBMIT</string>
+    <string name="send">SEND</string>
     <string name="continue_facebook">Continue with Facebook</string>
     <string name="continue_google">Continue with Google</string>
     <string name="forgot_click">Forgot Password?<u>Click Here</u></string>
