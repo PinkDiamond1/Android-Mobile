@@ -1,12 +1,13 @@
 package org.auctus.auctustrading
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+import android.view.View
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
+    override fun getContentLayoutId(): Int {
+        return R.layout.activity_login
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+    override fun onCreateContent(content: View) {
+
     }
 }

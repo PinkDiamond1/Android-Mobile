@@ -14,14 +14,15 @@
         android:layout_height="44dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="76dp"
-        android:background="@color/blueButtonColor"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/blueButtonColor"
         android:fontFamily="@font/gilroy"
         android:lineSpacingExtra="10sp"
         android:text="@string/enter"
         android:textColor="#fff"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/forgotPasswordTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -33,7 +34,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:drawableLeft="@drawable/icon_google"
-        android:background="@color/lightGreyButtonColor"
+        android:backgroundTint="@color/lightGreyButtonColor"
+        android:background="@drawable/rounded_button"
         android:drawablePadding="2dip"
         android:paddingLeft="15dp"
         android:fontFamily="@font/gilroy"
@@ -54,7 +56,8 @@
         android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
         android:drawableLeft="@drawable/icon_facebook"
-        android:background="@color/lightGreyButtonColor"
+        android:backgroundTint="@color/lightGreyButtonColor"
+        android:background="@drawable/rounded_button"
         android:drawablePadding="2dip"
         android:paddingLeft="15dp"
         android:fontFamily="@font/gilroy"
@@ -102,23 +105,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
         android:fontFamily="@font/gilroy"
         android:text="@string/forgot_click"
         android:textColor="#FFF"
         android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterButton" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/emailInput"
-        android:layout_width="260dp"
+        android:layout_width="272dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="72sp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/edit_text_style"
         android:ems="10"
         android:fontFamily="@font/gilroy"
@@ -127,17 +130,17 @@
         android:textAlignment="center"
         android:textColor="#747474"
         android:textColorHint="#747474"
-        app:layout_constraintBottom_toTopOf="@+id/passwordInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/googleButton" />
 
     <EditText
         android:id="@+id/passwordInput"
-        android:layout_width="260dp"
+        android:layout_width="272dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="188dp"
         android:background="@drawable/edit_text_style"
         android:ems="10"
         android:fontFamily="@font/gilroy"
@@ -146,9 +149,9 @@
         android:textAlignment="center"
         android:textColor="#747474"
         android:textColorHint="#747474"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
 
     <CheckBox
         android:id="@+id/rememberMeCheckBox"

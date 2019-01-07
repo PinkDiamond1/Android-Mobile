@@ -1,5 +1,6 @@
 package org.auctus.auctustrading
 
+import android.content.pm.ActivityInfo
 import android.opengl.Visibility
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -24,6 +25,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
         vs.layoutResource = getContentLayoutId()
         val mainContent = vs.inflate()
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         onCreateContent(mainContent)
     }
