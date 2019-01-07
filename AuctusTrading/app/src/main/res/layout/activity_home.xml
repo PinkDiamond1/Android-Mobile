@@ -33,7 +33,7 @@
         android:background="@color/blueButtonColor"
         android:fontFamily="@font/gilroy"
         android:lineSpacingExtra="10sp"
-        android:text="LOGIN"
+        android:text="@string/login"
         android:textColor="#fff"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
