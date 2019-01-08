@@ -12,7 +12,8 @@ import android.view.ViewStub
 import android.widget.ProgressBar
 import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.JsonObjectRequest
+import org.json.JSONObject
 
 
 abstract class BaseActivity : AppCompatActivity() {
@@ -48,17 +49,20 @@ abstract class BaseActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    protected fun sendPostRequest(url: String, successListener: Response.Listener<String>) {
-        sendRequest(Request.Method.POST, url, successListener)
+    protected fun sendPostRequest(url: String, requestObject: JSONObject,
+                                  successListener: Response.Listener<JSONObject>) {
+        sendRequest(Request.Method.POST, url, requestObject, successListener)
     }
 
-    protected fun sendGetRequest(url: String, successListener: Response.Listener<String>) {
-        sendRequest(Request.Method.GET, url, successListener)
+    protected fun sendGetRequest(url: String, requestObject: JSONObject,
+                                 successListener: Response.Listener<JSONObject>) {
+        sendRequest(Request.Method.GET, url, requestObject, successListener)
     }
 
-    protected fun sendRequest(requestMethod: Int, url: String, successListener: Response.Listener<String>) {
-        val stringRequest = StringRequest(requestMethod, "${BuildConfig.SERVER_URL}${url}",
-                successListener, getErrorDialogListener())
+    protected fun sendRequest(requestMethod: Int, url: String, requestObject: JSONObject,
+                              successListener: Response.Listener<JSONObject>) {
+        val stringRequest = JsonObjectRequest(requestMethod, "${BuildConfig.SERVER_URL}${url}",
+                requestObject, successListener, getErrorDialogListener())
 
         RequestQueueSingleton.getInstance(this.applicationContext).addToRequestQueue(stringRequest)
     }
