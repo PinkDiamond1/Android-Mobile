@@ -30,6 +30,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="260dp"
+        android:onClick="navigateToLogin"
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/blueButtonColor"
         android:fontFamily="@font/gilroy"
@@ -66,6 +67,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="56dp"
+        android:onClick="navigateToRegistration"
         android:autoLink="all"
         android:fontFamily="@font/gilroy"
         android:text="@string/join_now"
@@ -74,9 +76,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent" />;
-        tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="458dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
