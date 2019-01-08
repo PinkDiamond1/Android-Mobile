@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraint"
@@ -7,70 +8,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg2"
     tools:context=".LoginActivity">
-
-    <Button
-        android:id="@+id/enterButton"
-        android:layout_width="272dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="@color/blueButtonColor"
-        android:fontFamily="@font/gilroy"
-        android:lineSpacingExtra="10sp"
-        android:text="@string/enter"
-        android:textColor="#fff"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rememberMeCheckBox" />
-
-    <Button
-        android:id="@+id/googleButton"
-        android:layout_width="272dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:drawableLeft="@drawable/icon_google"
-        android:backgroundTint="@color/lightGreyButtonColor"
-        android:background="@drawable/rounded_button"
-        android:drawablePadding="2dip"
-        android:paddingLeft="15dp"
-        android:fontFamily="@font/gilroy"
-        android:lineSpacingExtra="10sp"
-        android:text="@string/continue_google"
-        android:textAllCaps="false"
-        android:textColor="#333"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/facebookButton" />
-
-    <Button
-        android:id="@+id/facebookButton"
-        android:layout_width="272dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="8dp"
-        android:drawableLeft="@drawable/icon_facebook"
-        android:backgroundTint="@color/lightGreyButtonColor"
-        android:background="@drawable/rounded_button"
-        android:drawablePadding="2dip"
-        android:paddingLeft="15dp"
-        android:fontFamily="@font/gilroy"
-        android:lineSpacingExtra="10sp"
-        android:text="@string/continue_facebook"
-        android:textAllCaps="false"
-        android:textColor="#333"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -86,6 +23,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/vector_logo" />
 
+    <Button
+        android:id="@+id/googleButton"
+        android:layout_width="272dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:drawableLeft="@drawable/icon_google"
+        android:theme="@style/GreyCustomButton"
+        android:drawablePadding="2dip"
+        android:paddingLeft="15dp"
+        android:lineSpacingExtra="10sp"
+        android:text="@string/continue_google"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/facebookButton" />
+
+    <Button
+        android:id="@+id/facebookButton"
+        android:layout_width="272dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="8dp"
+        android:drawableLeft="@drawable/icon_facebook"
+        android:theme="@style/GreyCustomButton"
+        android:drawablePadding="2dip"
+        android:paddingLeft="15dp"
+        android:text="@string/continue_facebook"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -97,10 +70,89 @@
         android:fontFamily="@font/gilroy"
         android:text="@string/or"
         android:textColor="#FFF"
-        app:layout_constraintBottom_toTopOf="@+id/emailInput"
+        app:layout_constraintBottom_toTopOf="@+id/inputLayoutEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/googleButton" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputLayoutEmail"
+        android:theme="@style/InputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="72sp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/googleButton" >
+        <EditText
+            android:id="@+id/emailInput"
+            android:background="@drawable/edit_text_style"
+            android:theme="@style/InputControl"
+            android:layout_width="272dp"
+            android:layout_height="46dp"
+            android:ems="10"
+            android:hint="Email"
+            android:textColor="@color/formInputGrey"
+            android:inputType="textEmailAddress"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputLayoutPassword"
+        android:theme="@style/InputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail">
+        <EditText
+            android:id="@+id/passwordInput"
+            android:theme="@style/InputControl"
+            android:layout_width="272dp"
+            android:layout_height="46dp"
+            android:background="@drawable/edit_text_style"
+            android:ems="10"
+            android:textColor="@color/formInputGrey"
+            android:hint="Password"
+            android:inputType="textPassword"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/rememberMeCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:buttonTint="@color/formInputGrey"
+        android:text="@string/remember_me"
+        android:textColor="@color/formInputGrey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutPassword"     />
+
+    <Button
+        android:id="@+id/enterButton"
+        android:layout_width="272dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:theme="@style/BlueCustomButton"
+        android:text="@string/enter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rememberMeCheckBox" />
 
     <TextView
         android:id="@+id/forgotPasswordTextView"
@@ -118,56 +170,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterButton" />
 
-    <EditText
-        android:id="@+id/emailInput"
-        android:layout_width="272dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="72sp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/edit_text_style"
-        android:ems="10"
-        android:fontFamily="@font/gilroy"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:textAlignment="center"
-        android:textColor="#747474"
-        android:textColorHint="#747474"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/googleButton" />
-
-    <EditText
-        android:id="@+id/passwordInput"
-        android:layout_width="272dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/edit_text_style"
-        android:ems="10"
-        android:fontFamily="@font/gilroy"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textAlignment="center"
-        android:textColor="#747474"
-        android:textColorHint="#747474"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
-
-    <CheckBox
-        android:id="@+id/rememberMeCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:buttonTint="#747474"
-        android:text="@string/remember_me"
-        android:textColor="#747474"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput"     />
 </android.support.constraint.ConstraintLayout>
