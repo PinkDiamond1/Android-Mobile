@@ -1,5 +1,6 @@
 package org.auctus.auctustrading
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.ActivityInfo
@@ -14,6 +15,12 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import org.json.JSONObject
+import android.content.Context.INPUT_METHOD_SERVICE
+import android.graphics.Rect
+import android.support.v4.content.ContextCompat.getSystemService
+import android.widget.EditText
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
 
 
 abstract class BaseActivity : AppCompatActivity() {
@@ -34,6 +41,22 @@ abstract class BaseActivity : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         onCreateContent(mainContent)
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        if (event.action == MotionEvent.ACTION_DOWN) {
+            val v = currentFocus
+            if (v is EditText) {
+                val outRect = Rect()
+                v.getGlobalVisibleRect(outRect)
+                if (!outRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
+                    v.clearFocus()
+                    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(v.windowToken, 0)
+                }
+            }
+        }
+        return super.dispatchTouchEvent(event)
     }
 
     protected fun showProgress() {
