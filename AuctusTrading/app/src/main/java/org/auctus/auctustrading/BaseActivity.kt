@@ -61,13 +61,13 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected fun sendRequest(requestMethod: Int, url: String, requestObject: JSONObject,
                               successListener: Response.Listener<JSONObject>) {
-        val stringRequest = JsonObjectRequest(requestMethod, "${BuildConfig.SERVER_URL}${url}",
+        val jsonRequest = JsonObjectRequest(requestMethod, "${BuildConfig.SERVER_URL}${url}",
                 requestObject, successListener, getErrorDialogListener())
 
-        RequestQueueSingleton.getInstance(this.applicationContext).addToRequestQueue(stringRequest)
+        RequestQueueSingleton.getInstance(this.applicationContext).addToRequestQueue(jsonRequest)
     }
 
-    private fun getErrorDialogListener() : Response.ErrorListener {
+    protected fun getErrorDialogListener() : Response.ErrorListener {
         return Response.ErrorListener {
             val alertDialog = AlertDialog.Builder(this).create()
             alertDialog.setTitle("Alert")
