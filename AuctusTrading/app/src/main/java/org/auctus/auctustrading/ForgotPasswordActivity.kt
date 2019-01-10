@@ -20,6 +20,8 @@ class ForgotPasswordActivity : BaseActivity() {
         showProgress()
         val params = JSONObject()
         params.put("email", editEmail.text)
+        params.put("fromMobile", true)
+
         sendPostRequest("v1/accounts/passwords/recover",
                 params,
                 Response.Listener<JSONObject> { response ->
