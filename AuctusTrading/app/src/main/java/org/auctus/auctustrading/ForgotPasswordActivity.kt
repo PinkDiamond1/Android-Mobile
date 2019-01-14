@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.Toast
 import com.android.volley.Response
 import kotlinx.android.synthetic.main.activity_forgot_password.*
+import kotlinx.android.synthetic.main.activity_home.*
 import org.json.JSONObject
 
 
@@ -17,16 +18,26 @@ class ForgotPasswordActivity : BaseActivity() {
     }
 
     fun onClickSend(v: View) {
-        showProgress()
-        val params = JSONObject()
-        params.put("email", editEmail.text)
-        params.put("fromMobile", true)
+        if (validate()) {
+            showProgress()
+            val params = JSONObject()
+            params.put("email", editEmail.text)
+            params.put("fromMobile", true)
 
-        sendPostRequest("v1/accounts/passwords/recover",
-                params,
-                Response.Listener<JSONObject> { response ->
-                    hideProgress()
-                    navigate(HomeActivity::class.java)
-                })
+            sendPostRequest("v1/accounts/passwords/recover",
+                    params,
+                    Response.Listener<JSONObject> { response ->
+                        hideProgress()
+                        navigate(HomeActivity::class.java)
+                    })
+        }
+        else {
+            input_layout_email.isErrorEnabled = true
+            input_layout_email.error = "Please inform a valid email address."
+        }
+    }
+
+    private fun validate() : Boolean {
+        return ValidationUtil.isValidEmail(editEmail.text)
     }
 }
