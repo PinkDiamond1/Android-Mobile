@@ -30,8 +30,19 @@
             android:textAllCaps="false"
             android:textSize="16sp"
             android:lineSpacingExtra="10sp"
-            android:onClick="onPictureClicked"
+            android:onClick="onTakePictureClicked"
             android:theme="@style/GreyCustomButton"
             android:text="@string/take_a_picture" />
+
+        <Button
+            android:id="@+id/btnRemovePicture"
+            android:layout_width="272dp"
+            android:layout_height="70dp"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:lineSpacingExtra="10sp"
+            android:onClick="onRemovePictureClicked"
+            android:theme="@style/GreyCustomButton"
+            android:text="@string/remove_picture" />
     </LinearLayout>
 </FrameLayout>
