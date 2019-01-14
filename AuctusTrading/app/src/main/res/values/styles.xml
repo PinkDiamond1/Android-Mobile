@@ -25,7 +25,7 @@
         <item name="colorButtonNormal">@color/lightGreyButtonColor</item>
         <item name="android:textSize">16sp</item>
     </style>
-    <style name="InputLayout" parent="TextAppearance.AppCompat">
+    <style name="InputLayout" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textColorHint">@color/formInputGrey</item>
         <item name="boxStrokeColor">@color/formInputGrey</item>
         <item name="colorAccent">@color/formInputGrey</item>
