@@ -15,19 +15,12 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import org.json.JSONObject
-import android.content.Context.INPUT_METHOD_SERVICE
 import android.graphics.Rect
-import android.support.v4.content.ContextCompat.getSystemService
 import android.widget.EditText
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import com.android.volley.VolleyError
-import android.R.attr.data
 import org.json.JSONException
-
-
-
-
 
 
 abstract class BaseActivity : AppCompatActivity() {
