@@ -19,6 +19,7 @@ class ForgotPasswordActivity : BaseActivity() {
 
     fun onClickSend(v: View) {
         if (validate()) {
+            input_layout_email.isErrorEnabled = false
             showProgress()
             val params = JSONObject()
             params.put("email", editEmail.text)

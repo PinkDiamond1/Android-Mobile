@@ -21,6 +21,13 @@ import android.support.v4.content.ContextCompat.getSystemService
 import android.widget.EditText
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
+import com.android.volley.VolleyError
+import android.R.attr.data
+import org.json.JSONException
+
+
+
+
 
 
 abstract class BaseActivity : AppCompatActivity() {
@@ -84,8 +91,15 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected fun sendRequest(requestMethod: Int, url: String, requestObject: JSONObject,
                               successListener: Response.Listener<JSONObject>) {
-        val jsonRequest = JsonObjectRequest(requestMethod, "${BuildConfig.SERVER_URL}${url}",
-                requestObject, successListener, getErrorDialogListener())
+        val jsonRequest = object : JsonObjectRequest(requestMethod, "${BuildConfig.SERVER_URL}${url}",
+                requestObject, successListener, getErrorDialogListener()) {
+            override fun parseNetworkError(volleyError: VolleyError?): VolleyError {
+                if (volleyError?.networkResponse != null && volleyError.networkResponse.data != null) {
+                    return VolleyError(String(volleyError.networkResponse.data))
+                }
+                return super.parseNetworkError(volleyError)
+            }
+        }
 
         RequestQueueSingleton.getInstance(this.applicationContext).addToRequestQueue(jsonRequest)
     }
@@ -94,11 +108,25 @@ abstract class BaseActivity : AppCompatActivity() {
         return Response.ErrorListener {
             val alertDialog = AlertDialog.Builder(this).create()
             alertDialog.setTitle("Alert")
-            alertDialog.setMessage("The request could not be processed")
+            alertDialog.setMessage(trimMessage(it.message, "error"))
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                     DialogInterface.OnClickListener { dialog, which -> dialog.dismiss() })
             alertDialog.show()
             hideProgress()
         }
+    }
+
+    fun trimMessage(json: String?, key: String): String? {
+        var trimmedString: String? = null
+
+        try {
+            val obj = JSONObject(json)
+            trimmedString = obj.getString(key)
+        } catch (e: JSONException) {
+            e.printStackTrace()
+            return null
+        }
+
+        return trimmedString
     }
 }
