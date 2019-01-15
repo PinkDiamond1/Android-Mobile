@@ -146,9 +146,7 @@ class RegistrationActivity : BaseActivity() {
 
     fun onClickSubmit(v: View) {
         if (validateFields()) {
-            inputLayoutName.isErrorEnabled = false
-            inputLayoutEmail.isErrorEnabled = false
-            inputLayoutPassword.isErrorEnabled = false
+            clearError()
 
             showProgress()
 
@@ -170,6 +168,7 @@ class RegistrationActivity : BaseActivity() {
     }
 
     private fun validateFields() : Boolean {
+        clearError()
         var isValid = true
 
         if (TextUtils.isEmpty(editName.text)) {
@@ -191,5 +190,11 @@ class RegistrationActivity : BaseActivity() {
         }
 
         return isValid
+    }
+
+    private fun clearError() {
+        inputLayoutName.isErrorEnabled = false
+        inputLayoutEmail.isErrorEnabled = false
+        inputLayoutPassword.isErrorEnabled = false
     }
 }
