@@ -3,6 +3,7 @@ package org.auctus.auctustrading
 import android.Manifest
 import android.content.Intent
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
 import com.android.volley.AuthFailureError
@@ -144,44 +145,56 @@ class RegistrationActivity : BaseActivity() {
     }
 
     fun onClickSubmit(v: View) {
-        showProgress()
-        val params = JSONObject()
-        params.put("name", editName.text)
-        params.put("email", editEmail.text)
-        params.put("password", editPassword.text)
-        params.put("description", editDescription.text)
-        params.put("referralCode", editInvitation.text)
-        params.put("fromMobile", true)
+        if (validateFields()) {
+            clearError()
 
-        sendPostRequest("v1/advisors",
-                params,
-                Response.Listener<JSONObject> { response ->
-                    hideProgress()
-                    navigate(HomeActivity::class.java)
-                })
+            showProgress()
+
+            val params = JSONObject()
+            params.put("name", editName.text)
+            params.put("email", editEmail.text)
+            params.put("password", editPassword.text)
+            params.put("description", editDescription.text)
+            params.put("referralCode", editInvitation.text)
+            params.put("fromMobile", true)
+
+            sendPostRequest("v1/accounts/register",
+                    params,
+                    Response.Listener {
+                        hideProgress()
+                        navigate(HomeActivity::class.java)
+                    })
+        }
     }
 
-    fun submit(v: View) {
-        val url = "${BuildConfig.SERVER_URL}v1/advisors"
-        val jsonObjRequest = object : StringRequest(Request.Method.POST,
-                url,
-                Response.Listener<String> { response ->
-                    hideProgress()
-                    navigate(HomeActivity::class.java)
-                },
-                getErrorDialogListener()) {
+    private fun validateFields() : Boolean {
+        clearError()
+        var isValid = true
 
-            override fun getBodyContentType(): String {
-                return "application/x-www-form-urlencoded; charset=UTF-8"
-            }
-
-            @Throws(AuthFailureError::class)
-            override fun getBody(): ByteArray {
-                return "name=aa&email=aa@aaa.com&password=bb&description=xulambis&fromMobile=true".toByteArray()
-            }
-
+        if (TextUtils.isEmpty(editName.text)) {
+            isValid = false
+            inputLayoutName.isErrorEnabled = true
+            inputLayoutName.error = getString(R.string.field_must_be_filled)
         }
 
-        RequestQueueSingleton.getInstance(this.applicationContext).addToRequestQueue(jsonObjRequest)
+        if (!ValidationUtil.isValidEmail(editEmail.text)) {
+            isValid = false
+            inputLayoutEmail.isErrorEnabled = true
+            inputLayoutEmail.error = getString(R.string.field_must_be_filled)
+        }
+
+        if (TextUtils.isEmpty(editPassword.text)) {
+            isValid = false
+            inputLayoutPassword.isErrorEnabled = true
+            inputLayoutPassword.error = getString(R.string.field_must_be_filled)
+        }
+
+        return isValid
+    }
+
+    private fun clearError() {
+        inputLayoutName.isErrorEnabled = false
+        inputLayoutEmail.isErrorEnabled = false
+        inputLayoutPassword.isErrorEnabled = false
     }
 }

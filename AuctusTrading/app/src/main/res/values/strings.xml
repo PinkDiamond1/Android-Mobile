@@ -19,8 +19,8 @@
     <string name="forgot_click">Forgot Password?<u>Click Here</u></string>
     <string name="forgot_password">Please enter the email address used to register. Subsequently you will get a recovery email, to restore your password.</string>
     <string name="link_add_picture"><u>Add Picture</u></string>
+    <string name="field_must_be_filled">Field must be filled.</string>
     <string name="take_a_picture">Take a Picture</string>
     <string name="choose_from_gallery">Choose from Gallery</string>
     <string name="remove_picture">Remove Picture</string>
-
 </resources>
