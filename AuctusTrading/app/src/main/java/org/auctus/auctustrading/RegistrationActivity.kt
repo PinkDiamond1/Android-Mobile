@@ -36,6 +36,11 @@ class RegistrationActivity : BaseActivity() {
     }
 
     override fun onCreateContent(content: View) {
+        createDescriptionTextCounter()
+        checkboxOnChange()
+    }
+
+    private fun createDescriptionTextCounter() {
         editDescription.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(s: Editable) {}
@@ -50,6 +55,15 @@ class RegistrationActivity : BaseActivity() {
             }
         })
     }
+
+    private fun checkboxOnChange() {
+        checkBoxAcceptTerms.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                checkBoxAcceptTerms.error = null
+            }
+        }
+    }
+
     fun onAddPictureClick(view: View){
         val fm = supportFragmentManager
         cameraGalleryPicker = CameraGaleryPicker.newInstance()
@@ -189,6 +203,11 @@ class RegistrationActivity : BaseActivity() {
             inputLayoutPassword.error = getString(R.string.field_must_be_filled)
         }
 
+        if (!checkBoxAcceptTerms.isChecked) {
+            isValid = false
+            checkBoxAcceptTerms.error = "You must accept the terms."
+        }
+
         return isValid
     }
 
@@ -196,5 +215,6 @@ class RegistrationActivity : BaseActivity() {
         inputLayoutName.isErrorEnabled = false
         inputLayoutEmail.isErrorEnabled = false
         inputLayoutPassword.isErrorEnabled = false
+        checkBoxAcceptTerms.error = null
     }
 }
