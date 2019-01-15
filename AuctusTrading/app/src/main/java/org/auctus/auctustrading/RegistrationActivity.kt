@@ -170,6 +170,7 @@ class RegistrationActivity : BaseActivity() {
             params.put("password", editPassword.text)
             params.put("description", editDescription.text)
             params.put("referralCode", editInvitation.text)
+            params.put("pictureBase64", encodedSelectedImage)
             params.put("fromMobile", true)
 
             sendPostRequest("v1/accounts/register",
