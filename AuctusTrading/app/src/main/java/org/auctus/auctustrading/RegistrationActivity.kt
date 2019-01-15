@@ -18,8 +18,13 @@ import android.graphics.BitmapFactory
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.DialogFragment
 import android.support.v4.content.ContextCompat
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import org.json.JSONObject
 import java.io.ByteArrayOutputStream
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+
+
 
 
 private const val PERMISSIONS_REQUEST_USE_CAMERA = 0x00AF
@@ -31,11 +36,14 @@ class RegistrationActivity : BaseActivity() {
 
     var cameraGalleryPicker: DialogFragment? = null
     var encodedSelectedImage  = ""
+
+
     override fun getContentLayoutId(): Int {
         return R.layout.activity_registration
     }
 
     override fun onCreateContent(content: View) {
+
         editDescription.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(s: Editable) {}
